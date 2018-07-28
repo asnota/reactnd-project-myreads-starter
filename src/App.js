@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react';
 import * as BooksAPI from './BooksAPI'
 import './App.css'
 import ListBooks from './ListBooks'
@@ -7,27 +7,53 @@ import ListBooks from './ListBooks'
 //import Search from './Search'
 
 
-class BooksApp extends React.Component {
+class BooksApp extends Component {
   state = {
-    /**
-     * TODO: Instead of using this state variable to keep track of which page
-     * we're on, use the URL in the browser's address bar. This will ensure that
-     * users can use the browser's back and forward buttons to navigate between
-     * pages, as well as provide a good URL they can bookmark and share.
-     */
-    showSearchPage: false
+    books: [
+      {
+        "id": "1",
+        "title": "The Hobbit",
+        "author": "The Hobbit",
+        "avatarURL": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS2SMCsSBwdm3B8mqMmCWt9vNNgqU5R0I5DfT9ylEBGgr2a8qTE"
+      },
+      {
+        "id": "2",
+        "title": "Harry Potter",
+        "author": "J.K. Rowling",
+        "avatarURL": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS2SMCsSBwdm3B8mqMmCWt9vNNgqU5R0I5DfT9ylEBGgr2a8qTE"
+      },
+      {
+        "id": "3",
+        "title": "1776",
+        "author": "David McCullough",
+        "avatarURL": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS2SMCsSBwdm3B8mqMmCWt9vNNgqU5R0I5DfT9ylEBGgr2a8qTE"
+      }
+    ]
+  }
+
+  removeBook = (book) => {
+    this.setState((state) => ({
+      books: state.books.filter((b) => b.id !== book.id)
+    }))
   }
 
   render() {
     return (
       <div className="app">
-        <ListBooks />
-
+        <div className="list-books">
+          <div className="list-books-title">
+            <h1>MyReads</h1>
+          </div>
+          <div className="list-books-content"></div>
+          <ListBooks
+            books={this.state.books}
+            onDeleteBook={this.removeBook}
+            />
+        </div>
       </div>
     )
   }
 }
-
 
 //<BookShelf />
 //<ShelfChanger />
