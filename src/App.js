@@ -4,7 +4,7 @@ import './App.css'
 import ListBooks from './ListBooks'
 //import BookShelf from './BookShelf'
 //import ShelfChanger from './ShelfChanger'
-//import Search from './Search'
+import Search from './Search'
 
 
 class BooksApp extends Component {
@@ -48,7 +48,8 @@ class BooksApp extends Component {
           <ListBooks
             books={this.state.books}
             onDeleteBook={this.removeBook}
-            />
+          />
+            <Search />
         </div>
       </div>
     )

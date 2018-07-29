@@ -7,12 +7,26 @@ class Search extends Component{
   }
 
   state = {
-    query = ''
+    query: ''
   }
 
-  render{
+  updateQuery = (query) => {
+    this.setState({ query: query.trim() })
+  }
+
+  render(){
     return(
-      <div> Hello World!</div>
+      <div className="search-books">
+      {JSON.stringify(this.state)}
+        <div className="search-books-bar">
+        <input
+          type='text'
+          placeholder='Search by title or author"'
+          value={this.state.query}
+          onChange={(event) => this.updateQuery(event.target.value)}
+        />
+        </div>
+      </div>
     )
   }
 }
