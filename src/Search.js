@@ -18,7 +18,7 @@ class Search extends Component{
   }
 
   render(){
-    let showingBooks
+  /*  let showingBooks
     if(this.state.query){
       const match = new RegExp(escapeRegExp(this.state.query), 'i')
       showingBooks = this.props.contacts.filter((book) => match.test(book.title))
@@ -27,17 +27,16 @@ class Search extends Component{
     }
 
     showingBooks.sort(sortBy('title'))
-
+ */
     return(
       <div className="search-books">
-      {JSON.stringify(this.state)}
         <div className="search-books-bar">
-        <input
-          type='text'
-          placeholder='Search by title or author"'
-          value={this.state.query}
-          onChange={(event) => this.updateQuery(event.target.value)}
-        />
+          <input
+            type='text'
+            placeholder='Search by title or author"'
+            value={this.state.query}
+            onChange={(event) => this.updateQuery(event.target.value)}
+          />
         </div>
       </div>
     )

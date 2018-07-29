@@ -3,33 +3,23 @@ import PropTypes from 'prop-types'
 import * as BooksAPI from './BooksAPI'
 import './App.css'
 import ListBooks from './ListBooks'
+import Search from './Search'
 //import BookShelf from './BookShelf'
 //import ShelfChanger from './ShelfChanger'
-import Search from './Search'
 
 
 class BooksApp extends Component {
   state = {
-    books: [
-      {
-        "id": "1",
-        "title": "The Hobbit",
-        "author": "The Hobbit",
-        "avatarURL": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS2SMCsSBwdm3B8mqMmCWt9vNNgqU5R0I5DfT9ylEBGgr2a8qTE"
-      },
-      {
-        "id": "2",
-        "title": "Harry Potter",
-        "author": "J.K. Rowling",
-        "avatarURL": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS2SMCsSBwdm3B8mqMmCWt9vNNgqU5R0I5DfT9ylEBGgr2a8qTE"
-      },
-      {
-        "id": "3",
-        "title": "1776",
-        "author": "David McCullough",
-        "avatarURL": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS2SMCsSBwdm3B8mqMmCWt9vNNgqU5R0I5DfT9ylEBGgr2a8qTE"
-      }
-    ]
+    books: []
+  }
+
+  //Gettig data from an external source
+  componentDidMount(){
+    BooksAPI.getAll().then((books) => {
+      this.setState({
+        books: books
+      })
+    })
   }
 
   removeBook = (book) => {
@@ -45,7 +35,6 @@ class BooksApp extends Component {
           <div className="list-books-title">
             <h1>MyReads</h1>
           </div>
-          <div className="list-books-content"></div>
           <ListBooks
             books={this.state.books}
             onDeleteBook={this.removeBook}
