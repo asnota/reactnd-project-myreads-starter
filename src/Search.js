@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types'
+import escapeRegExp from 'escape-string-regexp'
+import sortBy from 'sort-by'
+import ListBooks from './ListBooks'
 
 class Search extends Component{
   static propTypes = {
-
+    books: PropTypes.array.isRequired
   }
 
   state = {
@@ -15,6 +18,16 @@ class Search extends Component{
   }
 
   render(){
+    let showingBooks
+    if(this.state.query){
+      const match = new RegExp(escapeRegExp(this.state.query), 'i')
+      showingBooks = this.props.contacts.filter((book) => match.test(book.title))
+    } else {
+      showingBooks = this.props.books
+    }
+
+    showingBooks.sort(sortBy('title'))
+
     return(
       <div className="search-books">
       {JSON.stringify(this.state)}

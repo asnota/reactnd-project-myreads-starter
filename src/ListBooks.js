@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types'
+import Search from './Search'
 
 class ListBooks extends Component{
   static propTypes = {
@@ -14,7 +15,7 @@ class ListBooks extends Component{
   render(){
     return(
       <ol className = 'books-grid'>
-      {this.props.books.map((book) => (
+      {showingBooks.map((book) => (
         <li key={book.id} className='book-top'>
           <div className='book-cover' style={{width:128, height: 188, backgroundImage: `url(${book.avatarURL})`}}></div>
           <div className='book-title'>
