@@ -13,18 +13,21 @@ class ListBooks extends Component{
   }
 
   render(){
+
+    const { books, onDeleteBook } = this.props
+
     return(
       <ol className = 'books-grid'>
-      {this.props.books.map((book) => (
-        <li key={book.id} className='book-top'>
+      { books.map((book) => (
+        <li key={ book.id } className='book-top'>
           <div className='book-cover' style={{width:128, height: 188, backgroundImage: `url(${book.avatarURL})`}}></div>
           <div className='book-title'>
-            <p>{book.title}</p>
+            <p>{ book.title }</p>
           </div>
           <div className='book-authors'>
-            <p>{book.author}</p>
+            <p>{ book.author }</p>
           </div>
-          <button onClick={() => this.props.onDeleteBook(book)}>Remove</button>
+          <button onClick={() => onDeleteBook(book)}>Remove</button>
         </li>
       ))}
       </ol>
