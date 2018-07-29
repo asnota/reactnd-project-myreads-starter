@@ -1,16 +1,21 @@
-import React from 'react'
+import React, { Component } from 'react';
 import PropTypes from 'prop-types'
 
+class Search extends Component{
+  static propTypes = {
 
-function Search (props){
-  return(
-    <div> Hello World!</div>
-  )
+  }
+
+  state = {
+    query = ''
+  }
+
+  render{
+    return(
+      <div> Hello World!</div>
+    )
+  }
 }
 
-
-Search.propTypes = {
-
-}
 
 export default Search

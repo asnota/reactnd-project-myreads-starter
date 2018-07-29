@@ -1,16 +1,20 @@
-import React from 'react'
+import React, { Component } from 'react';
 import PropTypes from 'prop-types'
 
+class ShelfChanger extends Component{
+  static propTypes = {
 
-function ShelfChanger (props){
-  return(
-  <div> Hello World!</div>
-  )
-}
+  }
 
+  state = {
+    
+  }
 
-ShelfChanger.propTypes = {
-
+  render(){
+    return(
+    <div> Hello World!</div>
+    )
+  }
 }
 
 export default ShelfChanger

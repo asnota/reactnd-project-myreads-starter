@@ -1,15 +1,22 @@
-import React from 'react'
+import React, { Component } from 'react';
 import PropTypes from 'prop-types'
 
-function BookShelf (props){
-  return(
-    <div> Hello World!</div>
-  )
+class BookShelf extends Component{
+
+  static propTypes = {
+
+  }
+
+  state = {
+
+  }
+
+  render(){
+    return(
+      <div> Hello World!</div>
+    )
+  }
 }
 
-
-BookShelf.propTypes = {
-
-}
 
 export default BookShelf

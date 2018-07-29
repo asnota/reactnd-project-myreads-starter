@@ -1,11 +1,20 @@
-import React from 'react'
+import React, { Component } from 'react';
 import PropTypes from 'prop-types'
 
+class ListBooks extends Component{
+  static propTypes = {
+    books: PropTypes.array.isRequired,
+    onDeleteBook: PropTypes.func.isRequired
+  }
 
-function ListBooks (props){
-  return(
-    <ol className = 'books-grid'>
-      {props.books.map((book) => (
+  state = {
+
+  }
+
+  render(){
+    return(
+      <ol className = 'books-grid'>
+      {this.props.books.map((book) => (
         <li key={book.id} className='book-top'>
           <div className='book-cover' style={{width:128, height: 188, backgroundImage: `url(${book.avatarURL})`}}></div>
           <div className='book-title'>
@@ -14,16 +23,12 @@ function ListBooks (props){
           <div className='book-authors'>
             <p>{book.author}</p>
           </div>
-          <button onClick={() => props.onDeleteBook(book)}>Remove</button>
+          <button onClick={() => this.props.onDeleteBook(book)}>Remove</button>
         </li>
       ))}
-    </ol>
-  )
-}
-
-
-ListBooks.propTypes = {
-  books: PropTypes.array.isRequired
+      </ol>
+    )
+  }
 }
 
 export default ListBooks
