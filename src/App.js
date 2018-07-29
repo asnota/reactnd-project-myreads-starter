@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types'
+import { Route } from 'react-router-dom'
 import * as BooksAPI from './BooksAPI'
 import './App.css'
 import ListBooks from './ListBooks'
@@ -31,24 +32,21 @@ class BooksApp extends Component {
   render() {
     return (
       <div className="app">
-        <div className="list-books">
-          <div className="list-books-title">
-            <h1>MyReads</h1>
+        <Route exact path='/' render={() => (
+          <div className="list-books">
+            <div className="list-books-title">
+              <h1>MyReads</h1>
+            </div>
+            <ListBooks
+              books={this.state.books}
+              onDeleteBook={this.removeBook}
+            />
           </div>
-          <ListBooks
-            books={this.state.books}
-            onDeleteBook={this.removeBook}
-          />
-            <Search />
-        </div>
+        )}/>
+        <Route path='/search' component={Search}/>
       </div>
     )
   }
 }
-
-//<BookShelf />
-//<ShelfChanger />
-//<Search />
-
 
 export default BooksApp

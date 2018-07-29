@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types'
+import { Link } from 'react-router-dom'
 //import Search from './Search'
 
 class ListBooks extends Component{
@@ -30,6 +31,9 @@ class ListBooks extends Component{
           <button onClick={() => onDeleteBook(book)}>Remove</button>
         </li>
       ))}
+      <div className='open-search'>
+        <Link to='/search'>Add a book</Link>
+      </div>
       </ol>
     )
   }
