@@ -1,34 +1,46 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
+import * as BooksAPI from './utils/BooksAPI'
 import escapeRegExp from 'escape-string-regexp'
 import sortBy from 'sort-by'
 import ListBooks from './ListBooks'
 
 class Search extends Component{
   static propTypes = {
-    books: PropTypes.array.isRequired
+    books: PropTypes.array.isRequired,
+    onChangeShelf: PropTypes.func.isRequired
   }
 
   state = {
-    query: ''
+    query: '',
+    newBooks: []
   }
 
-  updateQuery = (query) => {
-    this.setState({ query: query.trim() })
+  updateQuery = (event) => {
+
+    const query = event.target.value.trim()
+    this.setState({ query: query })
+
+    if (query) {
+      BooksAPI.search(query, 30).then((books) => {
+        books.lenght > 0 ? this.setState({ newBooks: books }) : this.setState({ newBooks: [] })
+      })
+    }
   }
 
   render(){
-  /*  let showingBooks
+    /*
+    let showingBooks
     if(this.state.query){
       const match = new RegExp(escapeRegExp(this.state.query), 'i')
-      showingBooks = this.props.contacts.filter((book) => match.test(book.title))
+      showingBooks = this.props.books.filter((book) => match.test(book.title))
     } else {
       showingBooks = this.props.books
     }
 
     showingBooks.sort(sortBy('title'))
- */
+    */
     return(
       <div className="search-books">
         <div className="search-books-bar">
@@ -37,8 +49,8 @@ class Search extends Component{
             <input
               type='text'
               placeholder='Search by title or author'
-              value={this.state.query}
-              onChange={(event) => this.updateQuery(event.target.value)}
+              value={ this.state.query }
+              onChange={ this.updateQuery }
             />
           </div>
         </div>

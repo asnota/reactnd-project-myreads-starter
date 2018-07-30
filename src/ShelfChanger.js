@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types'
+import * as BooksAPI from './utils/BooksAPI'
 
 class ShelfChanger extends Component{
   static propTypes = {
@@ -17,6 +18,7 @@ class ShelfChanger extends Component{
     for (let item of books ) {
       if (item.id === book.id)  {
         currentShelf = item.shelf
+        BooksAPI.update(item, currentShelf);
         break
       }
     }
