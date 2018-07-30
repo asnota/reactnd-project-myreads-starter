@@ -1,13 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types'
 import { Route } from 'react-router-dom'
-import * as BooksAPI from './BooksAPI'
+import * as BooksAPI from './utils/BooksAPI'
 import './App.css'
 import ListBooks from './ListBooks'
 import Search from './Search'
-//import BookShelf from './BookShelf'
-//import ShelfChanger from './ShelfChanger'
-
 
 class BooksApp extends Component {
   state = {
@@ -17,16 +14,18 @@ class BooksApp extends Component {
   //Gettig data from an external source
   componentDidMount(){
     BooksAPI.getAll().then((books) => {
-      this.setState({
-        books: books
-      })
+      this.setState({ books })
     })
   }
+
 
   removeBook = (book) => {
     this.setState((state) => ({
       books: state.books.filter((b) => b.id !== book.id)
     }))
+
+    //BooksAPI.update(book);
+    //BooksAPI.search(book);
   }
 
   render() {
@@ -43,7 +42,11 @@ class BooksApp extends Component {
             />
           </div>
         )}/>
-        <Route path='/search' component={Search}/>
+        <Route path='/search' render={() => (
+          <Search
+            books={this.state.books}
+          />
+        )}/>
       </div>
     )
   }

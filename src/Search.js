@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types'
+import { Link } from 'react-router-dom'
 import escapeRegExp from 'escape-string-regexp'
 import sortBy from 'sort-by'
 import ListBooks from './ListBooks'
@@ -31,13 +32,16 @@ class Search extends Component{
     return(
       <div className="search-books">
         <div className="search-books-bar">
-          <input
-            type='text'
-            placeholder='Search by title or author"'
-            value={this.state.query}
-            onChange={(event) => this.updateQuery(event.target.value)}
-          />
+          <div className="search-books-input-wrapper">
+            <input
+              type='text'
+              placeholder='Search by title or author'
+              value={this.state.query}
+              onChange={(event) => this.updateQuery(event.target.value)}
+            />
+          </div>
         </div>
+        <Link to='/' className='close-search'>Close Search</Link>
       </div>
     )
   }

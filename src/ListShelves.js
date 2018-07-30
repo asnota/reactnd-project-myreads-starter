@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types'
 
-class BookShelf extends Component{
+class SingleBook extends Component{
 
   static propTypes = {
 
@@ -13,10 +13,10 @@ class BookShelf extends Component{
 
   render(){
     return(
-      <div> Hello World!</div>
+      <div></div>
     )
   }
 }
 
 
-export default BookShelf
+export default SingleBook
