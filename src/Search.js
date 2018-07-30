@@ -25,7 +25,7 @@ class Search extends Component{
 
     if (query) {
       BooksAPI.search(query, 30).then((books) => {
-        books.lenght > 0 ? this.setState({ newBooks: books }) : this.setState({ newBooks: [] })
+        books.length > 0 ? this.setState({ newBooks: books }) : this.setState({ newBooks: [] })
       })
     }
   }
@@ -66,7 +66,7 @@ class Search extends Component{
               { newBooks.map((book) => (
                 <ListBooks
                   book={ book }
-                  books={ books }
+                  books={ newBooks }
                   key={ book.id }
                   onChangeShelf={ onChangeShelf }
                 />
