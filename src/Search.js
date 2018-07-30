@@ -8,6 +8,7 @@ import ListBooks from './ListBooks'
 
 class Search extends Component{
   static propTypes = {
+    book: PropTypes.object.isRequired,
     books: PropTypes.array.isRequired,
     onChangeShelf: PropTypes.func.isRequired
   }
@@ -41,6 +42,10 @@ class Search extends Component{
 
     showingBooks.sort(sortBy('title'))
     */
+
+    const { query, newBooks } = this.state
+    const { books, onChangeShelf } = this.props
+
     return(
       <div className="search-books">
         <div className="search-books-bar">
@@ -53,6 +58,22 @@ class Search extends Component{
               onChange={ this.updateQuery }
             />
           </div>
+        </div>
+
+        <div className="search-books-results">
+          { newBooks.length > 0 && (
+            <ol className="books-grid">
+              { newBooks.map((book) => (
+                <ListBooks
+                  book={ book }
+                  books={ books }
+                  key={ book.id }
+                  onChangeShelf={ onChangeShelf }
+                />
+              ))}
+            </ol>
+          )}
+
         </div>
       </div>
     )
