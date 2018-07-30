@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types'
 import { Route } from 'react-router-dom'
 import * as BooksAPI from './utils/BooksAPI'
 import './App.css'
-import ListBooks from './ListBooks'
 import Search from './Search'
 import ListShelves from './ListShelves'
 
@@ -16,9 +14,7 @@ class BooksApp extends Component {
   componentDidMount(){
     BooksAPI.getAll().then((books) => {
       this.setState({ books })
-      console.log(books);
     })
-
   }
 
   changeShelf = (newBook, newShelf) => {
@@ -47,13 +43,14 @@ class BooksApp extends Component {
             </div>
             <ListShelves
               books={ books }
-              onChangeShelf={this.changeShelf}
+              onChangeShelf={ this.changeShelf }
             />
           </div>
         )}/>
         <Route path='/search' render={() => (
           <Search
             books={ books }
+            onChangeShelf={ this.changeShelf }
           />
         )}/>
       </div>
