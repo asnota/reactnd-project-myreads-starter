@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types'
+import ListBooks from './ListBooks'
 
-class SingleBook extends Component{
+class ListShelves extends Component{
 
   static propTypes = {
 
@@ -13,10 +14,20 @@ class SingleBook extends Component{
 
   render(){
     return(
-      <div></div>
+      <div className="list-books-content">
+        <ListBooks
+          title="Currently Reading"
+        />
+        <ListBooks
+          title="Want to Reading"
+        />
+        <ListBooks
+          title="Read"
+        />
+      </div>
     )
   }
 }
 
 
-export default SingleBook
+export default ListShelves
