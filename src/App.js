@@ -32,12 +32,6 @@ class BooksApp extends Component {
     })
   }
 
-  removeBook = (book) => {
-    this.setState((state) => ({
-      books: state.books.filter((b) => b.id !== book.id)
-    }))
-  }
-
   render() {
 
     const { books } = this.state
@@ -49,10 +43,8 @@ class BooksApp extends Component {
             <div className="list-books-title">
               <h1>MyReads</h1>
             </div>
-
             <ListShelves
               books={ books }
-              onDeleteBook={this.removeBook}
               onChangeShelf={this.changeShelf}
             />
           </div>
