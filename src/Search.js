@@ -31,6 +31,14 @@ class Search extends Component{
     }
   }
 
+  clearQuery = () => {
+    this.setState({
+      query:'',
+      newBooks: []
+    })
+  }
+
+
   render(){
     /*
     let showingBooks
@@ -50,7 +58,11 @@ class Search extends Component{
     return(
       <div className="search-books">
         <div className="search-books-bar">
-          <Link to='/' className="close-search">Close Search</Link>
+          <Link
+            to='/'
+            className="close-search"
+            onClick={ this.clearQuery }
+            >Close Search</Link>
           <div className="search-books-input-wrapper">
             <input
               type='text'
@@ -74,7 +86,6 @@ class Search extends Component{
               ))}
             </ol>
           )}
-
         </div>
       </div>
     )
