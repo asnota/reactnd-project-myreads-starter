@@ -9,7 +9,6 @@ import ShelfChanger from './ShelfChanger'
 
 class Search extends Component{
   static propTypes = {
-    book: PropTypes.object.isRequired,
     books: PropTypes.array.isRequired,
     onChangeShelf: PropTypes.func.isRequired
   }
@@ -17,6 +16,12 @@ class Search extends Component{
   state = {
     query: '',
     newBooks: []
+  }
+
+  componentDidMount(){
+    BooksAPI.getAll().then((books) => {
+      this.setState({ books })
+    })
   }
 
   updateQuery = (event) => {
@@ -28,6 +33,8 @@ class Search extends Component{
       BooksAPI.search(query, 30).then((books) => {
         books.length > 0 ? this.setState({ newBooks: books }) : this.setState({ newBooks: [] })
       })
+    } else {
+      newBooks: []
     }
   }
 
@@ -40,7 +47,7 @@ class Search extends Component{
 
 
   render(){
-    /*
+
     let showingBooks
     if(this.state.query){
       const match = new RegExp(escapeRegExp(this.state.query), 'i')
@@ -50,7 +57,7 @@ class Search extends Component{
     }
 
     showingBooks.sort(sortBy('title'))
-    */
+
 
     const { query, newBooks } = this.state
     const { books, onChangeShelf } = this.props

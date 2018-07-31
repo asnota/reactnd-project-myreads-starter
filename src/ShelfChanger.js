@@ -17,9 +17,13 @@ class ShelfChanger extends Component{
 
     for (let item of books ) {
       if (item.id === book.id)  {
-        currentShelf = item.shelf
-        BooksAPI.update(item, currentShelf);
-        break
+        if (currentShelf !== undefined){
+          currentShelf = item.shelf
+          BooksAPI.update(item, currentShelf);
+      } else {
+          currentShelf = 'none'
+          BooksAPI.update(item, currentShelf);
+        }
       }
     }
 
