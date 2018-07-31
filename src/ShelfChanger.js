@@ -13,11 +13,11 @@ class ShelfChanger extends Component{
 
     const { book, books, onChangeShelf } = this.props
 
-    let currentShelf = 'none'
-
+    let currentShelf
+    
     for (let item of books ) {
       if (item.id === book.id)  {
-        if (currentShelf !== undefined){
+        if (item.shelf !== undefined){
           currentShelf = item.shelf
           BooksAPI.update(item, currentShelf);
       } else {

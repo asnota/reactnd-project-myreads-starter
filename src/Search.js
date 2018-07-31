@@ -74,7 +74,7 @@ class Search extends Component{
             <input
               type='text'
               placeholder='Search by title or author'
-              value={ this.state.query }
+              value={ query }
               onChange={ this.updateQuery }
             />
           </div>
