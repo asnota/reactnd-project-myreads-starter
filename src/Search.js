@@ -18,25 +18,22 @@ class Search extends Component{
     newBooks: []
   }
 
-  componentDidMount(){
-    BooksAPI.getAll().then((books) => {
-      this.setState({ books })
-    })
-  }
-
   updateQuery = (event) => {
 
     const query = event.target.value.trim()
     this.setState({ query: query })
 
     if (query) {
-      BooksAPI.search(query, 30).then((books) => {
+      BooksAPI.search(query, 15).then((books) => {
+
         books.length > 0 ? this.setState({ newBooks: books }) : this.setState({ newBooks: [] })
+        
       })
     } else {
-      newBooks: []
+      this.setState({ newBooks: [] })
     }
   }
+
 
   clearQuery = () => {
     this.setState({
