@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 import * as BooksAPI from './utils/BooksAPI'
@@ -9,6 +9,7 @@ import ShelfChanger from './ShelfChanger'
 
 class Search extends Component{
   static propTypes = {
+    book: PropTypes.object.isRequired,
     books: PropTypes.array.isRequired,
     onChangeShelf: PropTypes.func.isRequired
   }
@@ -26,14 +27,32 @@ class Search extends Component{
     if (query) {
       BooksAPI.search(query, 15).then((books) => {
 
+        this.verifyBookShelf(books)
+
         books.length > 0 ? this.setState({ newBooks: books }) : this.setState({ newBooks: [] })
-        
+
       })
     } else {
       this.setState({ newBooks: [] })
     }
   }
 
+
+  verifyBookShelf = ( books ) => {
+      let all_Books = this.props.books
+      for ( let book of books ) {
+        book.shelf = "none"
+      }
+
+      for ( let book of books ) {
+        for ( let b of all_Books ) {
+          if ( b.id === book.id ) {
+            book.shelf = b.shelf
+          }
+        }
+      }
+      return books
+    }
 
   clearQuery = () => {
     this.setState({
@@ -45,6 +64,7 @@ class Search extends Component{
 
   render(){
 
+  //Allows to search with a letter
     let showingBooks
     if(this.state.query){
       const match = new RegExp(escapeRegExp(this.state.query), 'i')

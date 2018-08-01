@@ -6,7 +6,7 @@ class ShelfChanger extends Component{
   static propTypes = {
     book: PropTypes.object.isRequired,
     books: PropTypes.array.isRequired,
-    onChangeShelf: PropTypes.func.isRequired,
+    onChangeShelf: PropTypes.func.isRequired
   }
 
   render(){
@@ -14,15 +14,15 @@ class ShelfChanger extends Component{
     const { book, books, onChangeShelf } = this.props
 
     let currentShelf
-    
+
     for (let item of books ) {
       if (item.id === book.id)  {
         if (item.shelf !== undefined){
           currentShelf = item.shelf
-          BooksAPI.update(item, currentShelf);
+          //BooksAPI.update(item, currentShelf);
       } else {
           currentShelf = 'none'
-          BooksAPI.update(item, currentShelf);
+        //  BooksAPI.update(item, currentShelf);
         }
       }
     }

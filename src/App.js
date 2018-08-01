@@ -29,11 +29,11 @@ class BooksApp extends Component {
       this.setState({ books: booksArray })
     })
   }
-  
+
 
   render() {
 
-    const { books } = this.state
+    const { books, book } = this.state
 
     return (
       <div className="app">
@@ -50,6 +50,7 @@ class BooksApp extends Component {
         )}/>
         <Route path='/search' render={() => (
           <Search
+            book= { book }
             books={ books }
             onChangeShelf={ this.changeShelf }
           />
