@@ -43,6 +43,7 @@ class BooksApp extends Component {
               <h1>MyReads</h1>
             </div>
             <ListShelves
+              book={ book }
               books={ books }
               onChangeShelf={ this.changeShelf }
             />

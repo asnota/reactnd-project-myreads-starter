@@ -5,7 +5,6 @@ import * as BooksAPI from './utils/BooksAPI'
 import escapeRegExp from 'escape-string-regexp'
 import sortBy from 'sort-by'
 import ListBooks from './ListBooks'
-import ShelfChanger from './ShelfChanger'
 
 class Search extends Component{
   static propTypes = {
