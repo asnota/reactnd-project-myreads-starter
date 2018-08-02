@@ -8,12 +8,13 @@ import ListBooks from './ListBooks'
 
 class Search extends Component{
   static propTypes = {
-    book: PropTypes.object.isRequired,
+  //  book: PropTypes.object.isRequired,
     books: PropTypes.array.isRequired,
     onChangeShelf: PropTypes.func.isRequired
   }
 
   state = {
+    screen: 'foundBooks',
     query: '',
     newBooks: []
   }
@@ -32,7 +33,7 @@ class Search extends Component{
 
       })
     } else {
-      this.setState({ newBooks: [] })
+      this.setState({ newBooks: [], screen: 'noBooks' })
     }
   }
 
@@ -74,7 +75,6 @@ class Search extends Component{
 
     showingBooks.sort(sortBy('title'))
 
-
     const { query, newBooks } = this.state
     const { books, onChangeShelf } = this.props
 
@@ -109,8 +109,15 @@ class Search extends Component{
               ))}
             </ol>
           )}
+
+          { this.state.screen === 'noBooks' && (
+            <div>
+              <h2>No books were found. Please perform another request.</h2>
+            </div>
+          )}
         </div>
       </div>
+
     )
   }
 }
