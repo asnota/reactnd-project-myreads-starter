@@ -21,15 +21,15 @@ class Search extends Component{
 
   updateQuery = (event) => {
 
-    const query = event.target.value.trim()
+    const query = event.target.value
     this.setState({ query: query })
 
     if (query) {
       BooksAPI.search(query, 15).then((books) => {
 
-        this.verifyBookShelf(books)
-
         books.length > 0 ? this.setState({ newBooks: books }) : this.setState({ newBooks: [] })
+
+        this.verifyBookShelf(books)
 
       })
     } else {
@@ -67,6 +67,7 @@ class Search extends Component{
   //Allows to search with a letter
     let showingBooks
     if(this.state.query){
+      this.state.query.trim()
       const match = new RegExp(escapeRegExp(this.state.query), 'i')
       showingBooks = this.props.books.filter((book) => match.test(book.title))
     } else {
@@ -99,14 +100,11 @@ class Search extends Component{
         <div className="search-books-results">
           { newBooks.length > 0 && (
             <ol className="books-grid">
-              { newBooks.map((book) => (
                 <ListBooks
-                  book={ book }
                   books={ newBooks }
-                  key={ book.id }
                   onChangeShelf={ onChangeShelf }
                 />
-              ))}
+              )
             </ol>
           )}
 
