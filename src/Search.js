@@ -40,6 +40,8 @@ class Search extends Component{
 
   verifyBookShelf = ( books ) => {
       let all_Books = this.props.books
+
+      if(books.length > 0){
       for ( let book of books ) {
         book.shelf = "none"
       }
@@ -51,7 +53,9 @@ class Search extends Component{
           }
         }
       }
+    }
       return books
+
     }
 
   clearQuery = () => {
