@@ -13,7 +13,7 @@
 
 ## Prerequisites
 
-This is an application, simulating the real-world fetch behavior form the remote API using React framework. The application is built using responsive design patterns and ideally should be accessible on any device with the Internet connection.
+This is an application, simulating the real-world fetch behavior form the remote API using React.js framework. The application is built using responsive design patterns and ideally should be accessible on any device with the Internet connection.
 
 ## Goals
 
@@ -21,7 +21,7 @@ The application helps the user to manage the state of the books, distributing th
 
 ## Instructions
 
-User opens the application and navigates to search page by pressing the add button in order to add a new button. User performs the search in the search bar on the search page and received the books available in the DB. The search terms are limited and are described in SEARCH_TERMS.md. User chooses the book and adds it to the corresponding shelf. When all books are added, user returns to the previous screen, pressing the return button and manages the state of each book, by placing it into necessary category. 
+User opens the application and navigates to search page by pressing the add button in order to add a new button. User performs the search in the search bar on the search page and received the books available in the DB. The search terms are limited and are described in SEARCH_TERMS.md. User chooses the book and adds it to the corresponding shelf. When all books are added, user returns to the previous screen, pressing the return button and manages the state of each book, by placing it into necessary category.
 
 In order to install the application, please download a zip or clone it via Git and store it to your local directory. Open Git and run 'npm start' to view the rendered version on the http://localhost:3000
 
@@ -31,7 +31,7 @@ This repository accepts pull requests.
 
 ## Deployment
 
-The project is built with pure JavaScript. No dependencies were used.
+The project requires React.js.
 
 ## Authors
 
